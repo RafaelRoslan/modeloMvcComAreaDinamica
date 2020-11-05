@@ -1,0 +1,73 @@
+*{
+    margin: 0; 
+    padding: 0;
+}
+
+body{
+    background-color: #007777;
+}
+
+#corpo{
+    width: 1000px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    border-left : 2px solid #bbbbbb;
+    border-right: 2px solid #bbbbbb;
+}
+/*----- topo-----------------------------*/
+#topo{
+    padding: 20px 25px;
+    border-bottom: 10px solid #bbbbbb;
+}
+
+#topo a{
+    color: #000000;
+    text-decoration: none;
+    font: 20px times;
+}
+
+#topo a:hover{
+    text-decoration: underline;
+}
+
+
+
+/*------conteudo------------------------*/
+#conteudo{
+    background-color: #ffffff;
+    padding: 20px 25px;
+}
+
+#conteudo h1{
+    font: 24px times;
+    color: #007777;
+    margin-bottom: 20px;
+}
+
+#conteudo article{
+    margin-bottom: 20px;
+}
+
+/*------article------------------------*/
+article h2{
+    padding-bottom: 7px;
+}
+
+article h2 a{
+    color: #000000;
+    font: 22px times;
+    text-decoration: none;
+}
+
+article h2 a:hover{
+text-decoration: underline;
+}
+
+article p{
+    padding-left: 2px;
+    font: 16px times;
+}
+
+.flutuacao-dir{
+    float: right;
+}

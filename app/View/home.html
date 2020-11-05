@@ -1,0 +1,13 @@
+<section>
+    <h1>POSTAGENS</h1>
+    
+    {% for post in postagens %}
+        <article>
+            <header>
+                <h2><a href="http://localhost/php_MVC/?pagina=post&id={{post.id_post}}">{{post.titulo}}</a></h2>
+            </header>
+            <p>{{post.conteudo}}</p>
+    </article>
+    {% endfor %}
+
+</section>
