@@ -25,14 +25,23 @@
 
             $conn = Connection::getConn();
 
-            $query = 'INSERT INTO comentario (nome, menssagem, id_post) VALUES (:nom, :msg, :id)';
+            $query = 'INSERT INTO comentario (nome, menssagem, id_post) VALUES (:nom, :msg, :idp)';
             $query = $conn->prepare($query);
             $query->bindValue(':nom', $coment['nome']);
             $query->bindValue(':msg', $coment['msg']);
-            $query->bindValue(':id', $coment['id'],PDO::PARAM_INT);
-            $query->execute();
+            $query->bindValue(':idp', $coment['id']);
+            
+            $verif = $query->execute();
 
+            if(!$verif){
 
+                throw new Exception("Falha em adicionar o comentario!");
+                return false;
+
+            }
+
+            return true;
+            
         }
 
     }
