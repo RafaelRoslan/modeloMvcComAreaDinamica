@@ -42,6 +42,75 @@
             return $result;
 
         }
+
+        public static function insert($dados){
+
+            if(empty($dados['titulo']) || empty($dados['conteudo'])){
+                throw new Exception("Preencha todos os campos!");
+                return false;
+            }
+
+            $conn = Connection::getConn();
+
+            $query = 'INSERT INTO postagem (titulo, conteudo) VALUES (:tit, :cont)';
+            $query = $conn->prepare($query);
+            $query->bindValue(':tit', $dados['titulo']);
+            $query->bindValue(':cont', $dados['conteudo']);
+            
+            $verif =  $query->execute();
+
+            if(!$verif){
+                throw new Exception("Falha ao postar publicação!");
+                return false;
+            }
+            
+            return true;
+
+        }
+
+        public static function update($dados){
+
+            if(empty($dados['titulo']) || empty($dados['conteudo'])){
+                throw new Exception("Preencha todos os campos!");
+                return false;
+            }
+            $conn = Connection::getConn();
+
+            $query = 'UPDATE postagem SET titulo = :tit, conteudo = :cont WHERE id_post = :id';
+            $query = $conn->prepare($query);
+            $query->bindValue(':tit', $dados['titulo']);
+            $query->bindValue(':cont', $dados['conteudo']);
+            $query->bindValue(':id', $dados['id_post']);
+            
+            $verif =  $query->execute();
+            
+            if(!$verif){
+                throw new Exception("Falha ao atualizar publicação!");
+                return false;
+            }
+            
+            return true;
+
+        }
+
+        public static function delete($id_post){
+            $conn = Connection::getConn();
+
+            $query = 'DELETE FROM postagem WHERE id_post = :id';
+            $query = $conn->prepare($query);
+            $query->bindValue(':id',$id_post, PDO::PARAM_INT);
+
+            $verif = $query->execute();
+
+            if(!$verif){
+                throw new Exception("Falha deletar publicação!");
+                return false;
+            }
+
+            return true;
+
+        }
+
     }
 
 ?>

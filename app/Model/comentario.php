@@ -21,6 +21,20 @@
 
         }
 
+        public static function insert($coment){
+
+            $conn = Connection::getConn();
+
+            $query = 'INSERT INTO comentario (nome, menssagem, id_post) VALUES (:nom, :msg, :id)';
+            $query = $conn->prepare($query);
+            $query->bindValue(':nom', $coment['nome']);
+            $query->bindValue(':msg', $coment['msg']);
+            $query->bindValue(':id', $coment['id'],PDO::PARAM_INT);
+            $query->execute();
+
+
+        }
+
     }
 
 ?>

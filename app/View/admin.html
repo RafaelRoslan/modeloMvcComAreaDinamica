@@ -1,11 +1,24 @@
 <h1>GERENCIADOR DE CONTEUDO</h1>
-<a href="#">CRIAR PUBLICAÇÃO</a>
+<a href="http://localhost/php_MVC/?pagina=admin&metodo=create">CRIAR PUBLICAÇÃO</a>
+<br>
+<br>
 <hr>
-<table>
+<br>
+<table border="2">
+
     <tr>
         <th>ID</th>
         <th>TITULO</th>
         <th>ALTERAR</th>
         <th>DELETAR</th>
     </tr>
+
+    {% for postagem in postagens %}
+    <tr>
+        <th>{{postagem.id_post}}</th>
+        <th>{{postagem.titulo}}</th>
+        <th><a href="http://localhost/php_MVC/?pagina=admin&metodo=editPost&id={{postagem.id_post}}">editar</a></th>
+        <th><a href="http://localhost/php_MVC/?pagina=admin&metodo=delete&id={{postagem.id_post}}">excluir</a></th>
+    </tr>
+    {% endfor %}
 </table>

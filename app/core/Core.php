@@ -5,7 +5,10 @@
         public function start($urlGet){
 
             //nome do metodo do Controller, o index()
-            $action = 'index';
+            if(!isset($urlGet['metodo']))
+                $action = 'index';
+            else
+                $action = $urlGet['metodo'];
 
             if(!isset($urlGet['pagina'])){
                 $controller = 'HomeController';
